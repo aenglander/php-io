@@ -1,8 +1,8 @@
 <?php
-if (!file_exists("/sys/class/gpio/gpio44")) {
-    file_put_contents("/sys/class/gpio/export", "44");
-    file_put_contents("out", "/sys/class/gpio/gpio44/direction");
+if (!file_exists("/sys/class/gpio/gpio18")) {
+    file_put_contents("/sys/class/gpio/export", "18");
+    file_put_contents("/sys/class/gpio/gpio18/direction", "out");
 }
-
-file_put_contents(("1" == file_get_contents("/sys/class/gpio/gpio44/")) ? "0" : "1");
+$current = trim(file_get_contents("/sys/class/gpio/gpio18/value"));
+file_put_contents("/sys/class/gpio/gpio18/value", ("1" == $current) ? "0" : "1");
 
